@@ -24,10 +24,12 @@ def merge_sort( arr ):
     while len( arr ) > 2:
         taller = arr[ pivot_point: ]
         taller_pivot_point = len( taller ) // 2
+        print( taller_pivot_point )
 
         # ALL ITEMS SMALLER THAN PIVOT_POINT
         shorter = arr[ :pivot_point ]
         shorter_pivot_point = len( shorter ) // 2
+        print( shorter_pivot_point )
 
     return arr
 
