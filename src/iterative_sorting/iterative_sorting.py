@@ -14,7 +14,7 @@ def selection_sort( arr ):
 
     sorted_values.append( arr[0] )
 
-    for i in range(0, len(arr) - 1):
+    for i in range(0, len(arr)):
         cur_index = i
         smallest_index = cur_index
         # TO-DO: find next smallest element
@@ -30,7 +30,7 @@ def selection_sort( arr ):
             print( arr[ i ] )
 
         elif arr[ i ] <  sorted_values[ len( sorted_values ) - 1 ]:
-            
+
             # INSERT FORMAT: arr.insert( index , element )
             print( '----------' )
             for x in range( len( sorted_values ) - 1 ):
@@ -45,15 +45,34 @@ def selection_sort( arr ):
             
 
     print( 'Sorted_values:' , sorted_values )
-    return arr
+    return sorted_values
 
 selection_sort( arr1 )
 
+print( '\n-------------- FIN --------------\n Bubble-Sort:`' )
+
 
 # TO-DO:  implement the Bubble Sort function below
+
+# 1. Loop through your array
+#     - Compare each element to its neighbor
+#     - If elements in wrong position (relative to each other, swap them)
+# 2. If no swaps performed, stop. Else, go back to the element at index 0 and repeat step 1.
+
 def bubble_sort( arr ):
 
+    for i in range( len( arr ) - 1 ):
+
+        if arr[ i ] > arr[ i + 1]:
+            remove = arr[ i ]
+            arr.insert( i + 2 , arr[i] )
+            arr.remove( remove )
+            print( arr )
+            bubble_sort( arr )
+
     return arr
+
+bubble_sort( arr1 )
 
 
 # STRETCH: implement the Count Sort function below
