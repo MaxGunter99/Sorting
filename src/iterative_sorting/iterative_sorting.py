@@ -8,44 +8,50 @@ arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7 ]
 def selection_sort( arr ):
     # loop through n-1 elements
 
-    sorted_values = []
+    if arr == []:
 
-    print( 'start' , arr[0]  )
+        return []
 
-    sorted_values.append( arr[0] )
+    else:
 
-    for i in range(0, len(arr)):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc) 
-             
-        
+        sorted_values = []
 
+        print( 'start' , arr[0]  )
 
-        # TO-DO: swap
+        sorted_values.append( arr[0] )
 
-        if arr[ i ] > sorted_values[ len( sorted_values ) - 1 ]:
-            sorted_values.append( arr[ i ] )
-            print( arr[ i ] )
-
-        elif arr[ i ] <  sorted_values[ len( sorted_values ) - 1 ]:
-
-            # INSERT FORMAT: arr.insert( index , element )
-            print( '----------' )
-            for x in range( len( sorted_values ) - 1 ):
+        for i in range(0, len(arr) ):
+            cur_index = i
+            smallest_index = cur_index
+            # TO-DO: find next smallest element
+            # (hint, can do in 3 loc) 
                 
-                if arr[ i ] < sorted_values[ x ]:
-
-                    print( 'Sorted' , sorted_values )
-                    print( f'{arr[ i ]} < { sorted_values[ x ] } , should insert at { x }' ) 
-
-                    sorted_values.insert( x , arr[ i ] )
-                    break
             
 
-    print( 'Sorted_values:' , sorted_values )
-    return sorted_values
+
+            # TO-DO: swap
+
+            if arr[ i ] > sorted_values[ len( sorted_values ) - 1 ]:
+                sorted_values.append( arr[ i ] )
+                print( arr[ i ] )
+
+            elif arr[ i ] <  sorted_values[ len( sorted_values ) - 1 ]:
+                
+                # INSERT FORMAT: arr.insert( index , element )
+                print( '----------' )
+                for x in range( len( sorted_values ) ):
+                    
+                    if arr[ i ] < sorted_values[ x ]:
+
+                        print( 'Sorted' , sorted_values )
+                        print( f'{arr[ i ]} < { sorted_values[ x ] } , should insert at { x }' ) 
+
+                        sorted_values.insert( x , arr[ i ] )
+                        break
+                
+        print( len( arr ) )
+        print( 'Sorted_values:' , len( sorted_values ) )
+        return sorted_values
 
 selection_sort( arr1 )
 
@@ -59,18 +65,60 @@ print( '\n-------------- FIN --------------\n Bubble-Sort:`' )
 #     - If elements in wrong position (relative to each other, swap them)
 # 2. If no swaps performed, stop. Else, go back to the element at index 0 and repeat step 1.
 
+
+# RECURSIVE
+# def bubble_sort( arr ):
+
+#     for i in range( len( arr ) - 1 ):
+
+#         if arr[ i ] > arr[ i + 1]:
+#             remove = arr[ i ]
+#             arr.insert( i + 2 , arr[i] )
+#             arr.remove( remove )
+#             print( arr )
+#             bubble_sort( arr )
+
+#     return arr
+
+# bubble_sort( arr1 )
+
+# ITERATIVE
+
 def bubble_sort( arr ):
 
-    for i in range( len( arr ) - 1 ):
+    if arr == []:
 
-        if arr[ i ] > arr[ i + 1]:
-            remove = arr[ i ]
-            arr.insert( i + 2 , arr[i] )
-            arr.remove( remove )
-            print( arr )
-            bubble_sort( arr )
+        return []
 
-    return arr
+    else:
+
+        bubble_sort_arr = []
+
+        print( 'Arr:' , arr )
+
+        bubble_sort_arr.append( arr[ len( arr ) - 1 ] )
+
+        for x in range( len( arr ) - 1 ):
+
+            print( 'bub:' , bubble_sort_arr )
+
+            x_index = arr[ x ]
+            print( x_index )
+
+            for y in range( len( bubble_sort_arr ) ):
+                y_index = bubble_sort_arr[ y ]
+                print( x_index , y_index )
+
+                if x_index < y_index:
+                    bubble_sort_arr.insert( y , x_index )
+                    break
+
+                elif x_index > y_index:
+                    if y == len( bubble_sort_arr ) - 1:
+                        bubble_sort_arr.append( x_index )              
+
+    print( bubble_sort_arr )
+    return bubble_sort_arr
 
 bubble_sort( arr1 )
 
